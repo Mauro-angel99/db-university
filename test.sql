@@ -18,7 +18,7 @@ WHERE `cfu` > 10;
 
 SELECT *
 FROM `students`
-WHERE YEAR(`date_of_birth`) < 1992;
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30;
 
 
 -- 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
@@ -69,6 +69,10 @@ GROUP BY `anno iscrizione`;
 
 
 -- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+SELECT COUNT(*) AS `num_insegnanti`,  `office_adress`
+FROM `teachers`
+GROUP BY `office_adress`;
 
 
 -- 3. Calcolare la media dei voti di ogni appello d'esame
